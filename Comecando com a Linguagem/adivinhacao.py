@@ -52,6 +52,6 @@ def jogar_adivinhacao():
 
     print("Fim de jogo")
 
-if(__name__ = "__main__"):
+if(__name__ == "__main__"):
     jogar_adivinhacao()
 
