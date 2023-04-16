@@ -3,16 +3,13 @@ import random
 
 def jogar_forca():
 
-<<<<<<< HEAD
     imprime_mensagem_abertura()
 
     palavra_secreta = carrega_palavra_secreta()
 
     letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
-=======
     palavra_secreta = "maca".upper()
     letras_acertadas = ["_" for letra in palavra_secreta]
->>>>>>> 67fdb2d8cc5f9e91cf9f3393562b11639b5942f0
 
     enforcou = False
     acertou = False
@@ -28,13 +25,11 @@ def jogar_forca():
 
 
         if(chute in palavra_secreta):
-<<<<<<< HEAD
             marca_chute_correto(chute, letras_acertadas, palavra_secreta)
         else:
             erros += 1
             desenha_forca(erros)
         enforcou = erros == 7
-=======
             index = 0
             for letra in palavra_secreta:
                 if(chute == letra):
@@ -43,7 +38,6 @@ def jogar_forca():
         else:
             erros += 1
         enforcou = erros == 6
->>>>>>> 67fdb2d8cc5f9e91cf9f3393562b11639b5942f0
         acertou = "_" not in letras_acertadas
 
         print(letras_acertadas)
