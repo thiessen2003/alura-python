@@ -6,7 +6,7 @@ class Conta:
         self.__titular = titular
         self.__saldo = saldo
         self.__limite = limite
-        self.__codigo_banco = "001"
+
 
     def extrato(self):
         print(f"Saldo {self.__saldo} do titular {self.__titular}")
@@ -44,7 +44,8 @@ class Conta:
     def set_limite(self, limite):
         self.__limite = limite
 
-    @property
-    def codigo_banco(self):
-        return self.__codigo_banco
-
+    #métodos estáticos são métodos da classe // eles não precisam de referência (logo não há necessidade de colocar o self) para criá-los.
+    #nesse caso, basicamente significa que mesmo que não passemos nenhum atributo para o objeto criado, é possível chamar tais métodos
+    @staticmethod
+    def codigos_bancos():
+        return {'BB':'001', 'Caixa':'104', 'Bradesco': '237'}
