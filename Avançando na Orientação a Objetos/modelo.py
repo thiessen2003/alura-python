@@ -19,3 +19,5 @@ class Serie:
 
     def dar_like(self):
         self.likes += 1
+
+serieboa = Serie("The Office", 2003, 3)
