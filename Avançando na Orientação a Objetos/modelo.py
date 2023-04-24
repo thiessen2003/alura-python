@@ -1,37 +1,52 @@
 class Programa:
     def __init__(self, nome, ano):
-        self.__nome = nome.title()
-        self.ano = nome
-        self.__likes = 0
+        self._nome = nome.title()
+        self.ano = ano
+        self._likes = 0
 
     @property
     def likes(self):
-        return self.__likes
+        return self._likes
 
     def dar_like(self):
-        self.__likes += 1
+        self._likes += 1
 
     @property
     def nome(self):
-        return self.__nome
+        return self._nome
 
     @nome.setter
-    def set_nome(self, novo_nome):
-        self.__nome = novo_nome.title()
+    def nome(self, novo_nome):
+        self._nome = novo_nome.title()
 
 
-class Filme:
-
+class Filme(Programa): #privado não é herdado para a classe filha
     def __init__(self, nome, ano, duracao):
-        self.__nome = nome.title()
-        self.ano = nome
+        super().__init__(nome, ano)
         self.duracao = duracao
-        self.__likes = 0
+
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes}')
 
 
-class Serie:
 
+class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
-        self.__nome = nome
-        self.ano = nome
+        super().__init__(nome, ano)
         self.temporadas = temporadas
+
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes}')
+
+
+vingadores = Filme('Vingadores - Guerra Infinita', 2018, 160)
+vingadores.dar_like()
+atlanta = Serie('Atlanta', 2018, 2)
+atlanta.dar_like()
+atlanta.dar_like()
+
+
+filmes_e_series = [vingadores, atlanta]
+
+for programa in filmes_e_series:
+    programa.imprime()
