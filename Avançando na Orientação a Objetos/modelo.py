@@ -1,9 +1,7 @@
-class Filme:
-
-    def __init__(self, nome, ano, duracao):
+class Programa:
+    def __init__(self, nome, ano):
         self.__nome = nome.title()
         self.ano = nome
-        self.duracao = duracao
         self.__likes = 0
 
     @property
@@ -22,13 +20,19 @@ class Filme:
         self.__nome = novo_nome.title()
 
 
+class Filme:
+
+    def __init__(self, nome, ano, duracao):
+        self.__nome = nome.title()
+        self.ano = nome
+        self.duracao = duracao
+        self.__likes = 0
+
+
 class Serie:
 
     def __init__(self, nome, ano, temporadas):
-        self.__ome = nome
+        self.__nome = nome
         self.ano = nome
         self.temporadas = temporadas
         self.__likes = 0
-
-    def dar_like(self):
-        self.likes += 1
