@@ -35,4 +35,3 @@ class Serie:
         self.__nome = nome
         self.ano = nome
         self.temporadas = temporadas
-        self.__likes = 0
