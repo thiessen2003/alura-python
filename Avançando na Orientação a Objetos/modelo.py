@@ -19,14 +19,17 @@ class Programa:
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
 
+    def __str__(self): #dunder function para representar textual o objeto
+        return f'{self._nome} - {self.ano} - {self._likes} Likes'
+
 
 class Filme(Programa): #privado não é herdado para a classe filha
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
 
-    def imprime(self):
-        print(f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes}')
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes}'
 
 
 
@@ -35,18 +38,42 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
-    def imprime(self):
-        print(f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes}')
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes}'
+
+class Playlist:
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+
+    def __getitem__(self, item): #permite a iteração
+        return self._programas[item]
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    def __len__(self):
+        return len(self._programas)
 
 
 vingadores = Filme('Vingadores - Guerra Infinita', 2018, 160)
-vingadores.dar_like()
 atlanta = Serie('Atlanta', 2018, 2)
+tmep = Filme('Todo Mundo em Pânico', 1999, 100)
+demolidor = Serie('Demolidor', 2016, 2)
+
+vingadores.dar_like()
+demolidor.dar_like()
+tmep.dar_like()
 atlanta.dar_like()
 atlanta.dar_like()
 
 
-filmes_e_series = [vingadores, atlanta]
+filmes_e_series = [vingadores, atlanta, demolidor, tmep]
+playlist_fim_de_semana = Playlist('fim de semana', filmes_e_series)
 
-for programa in filmes_e_series:
-    programa.imprime()
+print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
+
+for programa in playlist_fim_de_semana:
+    print(programa)
+
