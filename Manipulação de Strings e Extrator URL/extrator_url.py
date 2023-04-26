@@ -1,3 +1,5 @@
+import re
+
 class ExtratorURL:
     def __init__(self, url):
         self.url = self.sanitiza_url(url)
@@ -12,6 +14,11 @@ class ExtratorURL:
     def valida_url(self):
         if not self.url:
             raise ValueError("A URL está vazia")
+
+        padrao_url = re.compile('(http(s)?://)?(www.)?bytebank.com(.br)?/cambio')
+        match = padrao_url.match(self.url)
+        if not match:
+            raise ValueError("A URL não é válida.")
 
     def get_url_base(self):
         indice_interrogacao = self.url.find('?')
@@ -32,6 +39,17 @@ class ExtratorURL:
         else:
             valor = self.get_url_parametros[indice_valor:indice_e_comercial]
         return valor
+
+    def __len__(self):
+        return len(self.url)
+
+    def __str__(self):
+        return self.url
+
+    def __eq__(self, other):
+        return self.url == other.url
+    #não retorna igualdade referente a endereço de memória | Para isso, utilizamos is, que nos permite ver se objetos são idênticos e não somente iguais
+
 
 #nome disso é interface da classe | basicamente, uma visão geral da classe e seus métodos
 extrator_url = ExtratorURL("https://bytebank.com/cambio?quantidade=100&moedaDestino=dolar&moedaOrigem=real")
