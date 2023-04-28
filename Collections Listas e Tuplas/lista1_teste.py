@@ -20,3 +20,15 @@ else:
 
 #List comprehension: para somar 1 a cada idade, há uma sintaxe simplificada
 idades_no_ano_que_vem = [(idade+1) for idade in idades]
+
+#enumerate é uma das inúmeras builtins funcionts do Python
+for indice, idade in enumerate(idades):
+    print(indice, idade)
+
+#ordena a lista
+print(sorted(idades))
+print(sorted(idades, reverse=True))
+#ou podemos fazer também idades.sort()
+
+#entrega a ordem reversa da lista
+print(reversed(idades))
