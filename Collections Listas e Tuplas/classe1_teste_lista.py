@@ -1,4 +1,6 @@
 from abc import ABCMeta, abstractmethod
+from operator import attrgetter
+
 from classe2_teste_lista import ContaSalario
 
 class Conta(metaclass = ABCMeta):
@@ -10,7 +12,7 @@ class Conta(metaclass = ABCMeta):
         self._saldo += valor
 
     def __str__(self):
-        return (f"[>>>Código {self.codigo} Saldo {self.saldo}<<<]")
+        return (f"[>>>Código {self._codigo} Saldo {self._saldo}<<<]")
 
     @abstractmethod
     def passa_o_mes(self):
@@ -64,7 +66,7 @@ conta_do_mauricio.deposita(250)
 contas_ordenamento = [conta_do_mauricio, conta_da_daniela, conta_do_gabriel]
 
 #Dessa forma, a função reduz os objetos a algo comparável
-for conta in sorted(contas_ordenamento, key=extrai_saldo): #ou key=attrgetter("_saldo")
+for conta in sorted(contas_ordenamento, key=attrgetter("_saldo", "_codigo")): #ou extrai_saldo | no caso do attrgetter, está sendo dito basicamente que o critério de desempate seria o _codigo
     print(conta)
 
 #Teste iteração

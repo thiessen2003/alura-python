@@ -1,3 +1,7 @@
+from functools import total_ordering
+
+@total_ordering
+#O módulo total_ordering da biblioteca functools permite que a partir das dunder functions _eq__ e __lt__, todas outras operações de comparação e etc sejam realizadas, tal como a operação <= e =>
 class ContaSalario:
 
     def __init__(self, codigo):
@@ -15,7 +19,10 @@ class ContaSalario:
             return False
         return self._codigo == outro._codigo
 
-    #lt = less than
+    #lt = less than | permite utilizar o sorted com a ordem natural dos objetos
     def __lt__(self, outro):
-        return self._saldo < outro._saldo
+        if self._saldo != outro._saldo:
+            return self._saldo < outro._saldo
+        return self._codigo < outro._codigo
+
 #isinstance() verifica a hierarquia de classes também
