@@ -25,7 +25,7 @@ set_usuarios_data_science.add(95)
 
 set_nova_lista_de_usuarios = frozenset(set_usuarios_machine_learning)
 
-#Implementação com strings
+#Implementação com strings e texto
 meu_texto = "Olá, meu nome é Gabriel e tenho 20 anos."
 palavras_do_texto = meu_texto.split()
 print(set(palavras_do_texto))
