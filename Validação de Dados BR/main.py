@@ -1,10 +1,7 @@
-from cpf import CPF
-from validate_docbr import CPF
-from validate_docbr import CNPJ
+from telefones_br import TelefonesBr
 
-exemplo_cpnj = "13254678410913"
-cnpj = CNPJ()
-cpf = CPF()
-print(cpf.validate("12345123454"))
-print(cnpj.validate(exemplo_cpnj))
+telefone = "5551991295412"
 
+telefone_objeto = TelefonesBr(telefone)
+
+telefone_objeto.formata_numero()
