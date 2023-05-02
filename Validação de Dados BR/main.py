@@ -1,7 +1,10 @@
-from telefones_br import TelefonesBr
+import requests
 
-telefone = "5551991295412"
+from acesso_cep import BuscaEndereco
 
-telefone_objeto = TelefonesBr(telefone)
+cep = "90450210"
+objeto_cep = BuscaEndereco(cep)
+objeto_cep.acessa_via_cep()
 
-telefone_objeto.formata_numero()
+bairro, cidade, uf = objeto_cep.acessa_via_cep()
+print(bairro, cidade, uf)
