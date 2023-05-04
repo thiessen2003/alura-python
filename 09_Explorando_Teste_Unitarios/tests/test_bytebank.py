@@ -1,4 +1,6 @@
 from codigo.bytebank import Funcionario
+import pytest
+from pytest import mark
 
 class TestClass:
     def test_quando_idade_recebe_13_03_2003_deve_retornar_22(self):
@@ -29,4 +31,25 @@ class TestClass:
         funcionario_teste.decrescimo_salario() #When
         resultado = funcionario_teste.salario
 
+    @mark.calcular_bonus
+    def test_quando_calcular_bonus_recebe_1000_deve_retornar_100(self):
+        entrada = 1000  # Given
+        esperado = 100
+
+        funcionario_teste = Funcionario('teste', '11/11/2000', entrada)
+        resultado = funcionario_teste.calcular_bonus() # When
+
         assert resultado == esperado
+
+    #para chamar um mark, basta chamar pytest -v -m calculas_bonus
+    #para checar markers padrão, basta digitar no terminal pytest --markers
+    @mark.calcular_bonus
+    def test_quando_calcular_bonus_recebe_10000000_deve_retornar_exception(self):
+        with pytest.raises(Exception): #a utilização do with pressupoe uma exception no final do teste
+
+            entrada = 1000000  # Given
+
+            funcionario_teste = Funcionario('teste', '11/11/2000', entrada)
+            resultado = funcionario_teste.calcular_bonus()  # When
+
+            assert resultado
