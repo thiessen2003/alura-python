@@ -2,6 +2,12 @@ from codigo.bytebank import Funcionario
 import pytest
 from pytest import mark
 
+#pytest --cov serve para testar a cobertura dos testes em relação aos códigos de certo programa
+#podemos escolher o arquivo através do comando cov=nome_do_arquivo
+#pytest --cov=codigo tests/ --cov-report term-missing mostra a linha de código que está faltando ser coberta por um teste
+#pytest --cov=codigo tests/ --cov-report html
+
+
 class TestClass:
     def test_quando_idade_recebe_13_03_2003_deve_retornar_22(self):
         entrada = '13/03/2003' #Given | Serve para dar o contexto
@@ -53,3 +59,4 @@ class TestClass:
             resultado = funcionario_teste.calcular_bonus()  # When
 
             assert resultado
+
